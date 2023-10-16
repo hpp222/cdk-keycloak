@@ -66,7 +66,7 @@ Object {
             Array [
               "{{resolve:secretsmanager:",
               Object {
-                "Ref": "keycloakdemoKeyCloakDatabaseDBClusterSecret77AE3E0D3fdaad7efa858a3daf9490cf0a702aeb",
+                "Ref": "keycloaktestsqlKeyCloakDatabaseDBClusterSecretCF5198C43fdaad7efa858a3daf9490cf0a702aeb",
               },
               ":SecretString:password::}}",
             ],
@@ -97,6 +97,8 @@ Object {
         "KeyCloakVpcPrivateSubnet1RouteTableAssociationD9158DB8",
         "KeyCloakVpcPrivateSubnet2DefaultRoute8D3CC7CF",
         "KeyCloakVpcPrivateSubnet2RouteTableAssociation4BA8795B",
+        "KeyCloakVpcPrivateSubnet3DefaultRoute69A2CD69",
+        "KeyCloakVpcPrivateSubnet3RouteTableAssociationEEA47270",
       ],
       "Properties": Object {
         "DBClusterIdentifier": Object {
@@ -114,7 +116,7 @@ Object {
     "KeyCloakDatabaseDBClusterSecretAttachment50401C92": Object {
       "Properties": Object {
         "SecretId": Object {
-          "Ref": "keycloakdemoKeyCloakDatabaseDBClusterSecret77AE3E0D3fdaad7efa858a3daf9490cf0a702aeb",
+          "Ref": "keycloaktestsqlKeyCloakDatabaseDBClusterSecretCF5198C43fdaad7efa858a3daf9490cf0a702aeb",
         },
         "TargetId": Object {
           "Ref": "KeyCloakDatabaseDBCluster06E9C0E1",
@@ -167,9 +169,9 @@ Object {
       },
       "Type": "AWS::EC2::SecurityGroup",
     },
-    "KeyCloakDatabaseDBClusterSecurityGroupfromkeycloakdemoKeyCloakDatabaseDBClusterSecurityGroup7FEA7CF633060A2D6973": Object {
+    "KeyCloakDatabaseDBClusterSecurityGroupfromkeycloaktestsqlKeyCloakDatabaseDBClusterSecurityGroup614C82B633064FBDD4FA": Object {
       "Properties": Object {
-        "Description": "from keycloakdemoKeyCloakDatabaseDBClusterSecurityGroup7FEA7CF6:3306",
+        "Description": "from keycloaktestsqlKeyCloakDatabaseDBClusterSecurityGroup614C82B6:3306",
         "FromPort": 3306,
         "GroupId": Object {
           "Fn::GetAtt": Array [
@@ -188,9 +190,9 @@ Object {
       },
       "Type": "AWS::EC2::SecurityGroupIngress",
     },
-    "KeyCloakDatabaseDBClusterSecurityGroupfromkeycloakdemoKeyCloakKeyCloakContainerServiceSecurityGroup17E82FEDIndirectPortE00E6780": Object {
+    "KeyCloakDatabaseDBClusterSecurityGroupfromkeycloaktestsqlKeyCloakKeyCloakContainerServiceSecurityGroup63FC2CF2IndirectPortFEEA832D": Object {
       "Properties": Object {
-        "Description": "from keycloakdemoKeyCloakKeyCloakContainerServiceSecurityGroup17E82FED:{IndirectPort}",
+        "Description": "from keycloaktestsqlKeyCloakKeyCloakContainerServiceSecurityGroup63FC2CF2:{IndirectPort}",
         "FromPort": Object {
           "Fn::GetAtt": Array [
             "KeyCloakDatabaseDBCluster06E9C0E1",
@@ -230,6 +232,9 @@ Object {
           Object {
             "Ref": "KeyCloakVpcPrivateSubnet2SubnetC8682D75",
           },
+          Object {
+            "Ref": "KeyCloakVpcPrivateSubnet3SubnetE1955755",
+          },
         ],
       },
       "Type": "AWS::RDS::DBSubnetGroup",
@@ -242,6 +247,8 @@ Object {
         "KeyCloakVpcPrivateSubnet1RouteTableAssociationD9158DB8",
         "KeyCloakVpcPrivateSubnet2DefaultRoute8D3CC7CF",
         "KeyCloakVpcPrivateSubnet2RouteTableAssociation4BA8795B",
+        "KeyCloakVpcPrivateSubnet3DefaultRoute69A2CD69",
+        "KeyCloakVpcPrivateSubnet3RouteTableAssociationEEA47270",
       ],
       "Properties": Object {
         "DBClusterIdentifier": Object {
@@ -275,6 +282,8 @@ Object {
         "KeyCloakVpcPublicSubnet1RouteTableAssociationFF91B678",
         "KeyCloakVpcPublicSubnet2DefaultRouteCFC19404",
         "KeyCloakVpcPublicSubnet2RouteTableAssociation3117C73A",
+        "KeyCloakVpcPublicSubnet3DefaultRouteC1D6BB3A",
+        "KeyCloakVpcPublicSubnet3RouteTableAssociation381AE091",
       ],
       "Properties": Object {
         "LoadBalancerAttributes": Array [
@@ -299,6 +308,9 @@ Object {
           Object {
             "Ref": "KeyCloakVpcPublicSubnet2Subnet22049636",
           },
+          Object {
+            "Ref": "KeyCloakVpcPublicSubnet3Subnet727591F1",
+          },
         ],
         "Type": "application",
       },
@@ -308,7 +320,7 @@ Object {
       "Properties": Object {
         "Certificates": Array [
           Object {
-            "CertificateArn": "MOCK_ARN",
+            "CertificateArn": "arn:aws:acm:ap-southeast-1:538275275839:certificate/bd2f2bb3-eb27-41bd-8d92-d2e3d4b138c0",
           },
         ],
         "DefaultActions": Array [
@@ -359,7 +371,7 @@ Object {
     },
     "KeyCloakKeyCloakContainerServiceALBSecurityGroup70C4484F": Object {
       "Properties": Object {
-        "GroupDescription": "Automatically created Security Group for ELB keycloakdemoKeyCloakKeyCloakContainerServiceALBB2622B2D",
+        "GroupDescription": "Automatically created Security Group for ELB keycloaktestsqlKeyCloakKeyCloakContainerServiceALB4EB542BA",
         "SecurityGroupIngress": Array [
           Object {
             "CidrIp": "0.0.0.0/0",
@@ -375,7 +387,7 @@ Object {
       },
       "Type": "AWS::EC2::SecurityGroup",
     },
-    "KeyCloakKeyCloakContainerServiceALBSecurityGrouptokeycloakdemoKeyCloakKeyCloakContainerServiceSecurityGroup17E82FED8080B024F550": Object {
+    "KeyCloakKeyCloakContainerServiceALBSecurityGrouptokeycloaktestsqlKeyCloakKeyCloakContainerServiceSecurityGroup63FC2CF2808061B8F7F5": Object {
       "Properties": Object {
         "Description": "Load balancer to target",
         "DestinationSecurityGroupId": Object {
@@ -446,6 +458,9 @@ Object {
               Object {
                 "Ref": "KeyCloakVpcPrivateSubnet2SubnetC8682D75",
               },
+              Object {
+                "Ref": "KeyCloakVpcPrivateSubnet3SubnetE1955755",
+              },
             ],
           },
         },
@@ -460,9 +475,9 @@ Object {
         "KeyCloakDatabaseDBClusterReader0090602C",
         "KeyCloakDatabaseDBCluster06E9C0E1",
         "KeyCloakDatabaseDBClusterSecretAttachment50401C92",
-        "keycloakdemoKeyCloakDatabaseDBClusterSecret77AE3E0D3fdaad7efa858a3daf9490cf0a702aeb",
-        "KeyCloakDatabaseDBClusterSecurityGroupfromkeycloakdemoKeyCloakDatabaseDBClusterSecurityGroup7FEA7CF633060A2D6973",
-        "KeyCloakDatabaseDBClusterSecurityGroupfromkeycloakdemoKeyCloakKeyCloakContainerServiceSecurityGroup17E82FEDIndirectPortE00E6780",
+        "keycloaktestsqlKeyCloakDatabaseDBClusterSecretCF5198C43fdaad7efa858a3daf9490cf0a702aeb",
+        "KeyCloakDatabaseDBClusterSecurityGroupfromkeycloaktestsqlKeyCloakDatabaseDBClusterSecurityGroup614C82B633064FBDD4FA",
+        "KeyCloakDatabaseDBClusterSecurityGroupfromkeycloaktestsqlKeyCloakKeyCloakContainerServiceSecurityGroup63FC2CF2IndirectPortFEEA832D",
         "KeyCloakDatabaseDBClusterSecurityGroup843B4392",
         "KeyCloakDatabaseDBClusterSubnetsE36F1B1B",
         "KeyCloakDatabaseDBClusterWriter11AC379C",
@@ -490,7 +505,7 @@ Object {
         "KeyCloakKeyCloakContainerServiceTaskDefTaskRole509DDBD7",
       ],
       "Properties": Object {
-        "GroupDescription": "keycloak-demo/KeyCloak/KeyCloakContainerService/Service/SecurityGroup",
+        "GroupDescription": "keycloak-test-sql/KeyCloak/KeyCloakContainerService/Service/SecurityGroup",
         "SecurityGroupEgress": Array [
           Object {
             "CidrIp": "0.0.0.0/0",
@@ -504,7 +519,7 @@ Object {
       },
       "Type": "AWS::EC2::SecurityGroup",
     },
-    "KeyCloakKeyCloakContainerServiceSecurityGroupfromkeycloakdemoKeyCloakKeyCloakContainerServiceALBSecurityGroup67E092F7808078CB5C80": Object {
+    "KeyCloakKeyCloakContainerServiceSecurityGroupfromkeycloaktestsqlKeyCloakKeyCloakContainerServiceALBSecurityGroup4DDAE1118080730B4A56": Object {
       "DependsOn": Array [
         "KeyCloakKeyCloakContainerServiceTaskDefTaskRole509DDBD7",
       ],
@@ -528,7 +543,7 @@ Object {
       },
       "Type": "AWS::EC2::SecurityGroupIngress",
     },
-    "KeyCloakKeyCloakContainerServiceSecurityGroupfromkeycloakdemoKeyCloakKeyCloakContainerServiceSecurityGroup17E82FED57800F354AE6B": Object {
+    "KeyCloakKeyCloakContainerServiceSecurityGroupfromkeycloaktestsqlKeyCloakKeyCloakContainerServiceSecurityGroup63FC2CF257800B2997FC1": Object {
       "DependsOn": Array [
         "KeyCloakKeyCloakContainerServiceTaskDefTaskRole509DDBD7",
       ],
@@ -552,7 +567,7 @@ Object {
       },
       "Type": "AWS::EC2::SecurityGroupIngress",
     },
-    "KeyCloakKeyCloakContainerServiceSecurityGroupfromkeycloakdemoKeyCloakKeyCloakContainerServiceSecurityGroup17E82FED78009722DBCE": Object {
+    "KeyCloakKeyCloakContainerServiceSecurityGroupfromkeycloaktestsqlKeyCloakKeyCloakContainerServiceSecurityGroup63FC2CF27800E56DC0C5": Object {
       "DependsOn": Array [
         "KeyCloakKeyCloakContainerServiceTaskDefTaskRole509DDBD7",
       ],
@@ -609,11 +624,7 @@ Object {
               Object {
                 "Ref": "AWS::Partition",
               },
-              ":iam::",
-              Object {
-                "Ref": "AWS::AccountId",
-              },
-              ":role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService",
+              ":iam::538275275839:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService",
             ],
           ],
         },
@@ -627,7 +638,7 @@ Object {
         "KeyCloakKeyCloakContainerServiceTaskDefTaskRole509DDBD7",
       ],
       "Properties": Object {
-        "PolicyName": "keycloakdemoKeyCloakKeyCloakContainerServiceTaskCountTargetCpuScaling8EE194F1",
+        "PolicyName": "keycloaktestsqlKeyCloakKeyCloakContainerServiceTaskCountTargetCpuScaling2BC21249",
         "PolicyType": "TargetTrackingScaling",
         "ScalingTargetId": Object {
           "Ref": "KeyCloakKeyCloakContainerServiceTaskCountTarget95167BD4",
@@ -648,7 +659,7 @@ Object {
             "EntryPoint": Array [
               "sh",
               "-c",
-              "touch cache-ispn-jdbc-ping.xml && echo \\"<?xml version=\\\\\\"1.0\\\\\\" encoding=\\\\\\"UTF-8\\\\\\"?> <infinispan    xmlns:xsi=\\\\\\"http://www.w3.org/2001/XMLSchema-instance\\\\\\"    xsi:schemaLocation=\\\\\\"urn:infinispan:config:11.0 http://www.infinispan.org/schemas/infinispan-config-11.0.xsd\\\\\\"    xmlns=\\\\\\"urn:infinispan:config:11.0\\\\\\">  <jgroups>    <stack name=\\\\\\"jdbc-ping-tcp\\\\\\" extends=\\\\\\"tcp\\\\\\">      <JDBC_PING connection_driver=\\\\\\"com.mysql.cj.jdbc.Driver\\\\\\"                 connection_username=\\\\\\"\\\\\${env.KC_DB_USERNAME}\\\\\\"                  connection_password=\\\\\\"\\\\\${env.KC_DB_PASSWORD}\\\\\\"                 connection_url=\\\\\\"jdbc:mysql://\\\\\${env.KC_DB_URL_HOST}/\\\\\${env.KC_DB_URL_DATABASE}\\\\\\"                 initialize_sql=\\\\\\"\\\\\${env.INITIALIZE_SQL}\\\\\\"                 info_writer_sleep_time=\\\\\\"500\\\\\\"                 remove_all_data_on_view_change=\\\\\\"true\\\\\\"                 stack.combine=\\\\\\"REPLACE\\\\\\"                 stack.position=\\\\\\"MPING\\\\\\" />    </stack>  </jgroups>  <cache-container name=\\\\\\"keycloak\\\\\\">    <transport lock-timeout=\\\\\\"60000\\\\\\" stack=\\\\\\"jdbc-ping-tcp\\\\\\"/>    <local-cache name=\\\\\\"realms\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <memory max-count=\\\\\\"10000\\\\\\"/>    </local-cache>    <local-cache name=\\\\\\"users\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <memory max-count=\\\\\\"10000\\\\\\"/>    </local-cache>    <distributed-cache name=\\\\\\"sessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"authenticationSessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"offlineSessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"clientSessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"offlineClientSessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"loginFailures\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <local-cache name=\\\\\\"authorization\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <memory max-count=\\\\\\"10000\\\\\\"/>    </local-cache>    <replicated-cache name=\\\\\\"work\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </replicated-cache>    <local-cache name=\\\\\\"keys\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <expiration max-idle=\\\\\\"3600000\\\\\\"/>      <memory max-count=\\\\\\"1000\\\\\\"/>    </local-cache>    <distributed-cache name=\\\\\\"actionTokens\\\\\\" owners=\\\\\\"3\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <expiration max-idle=\\\\\\"-1\\\\\\" lifespan=\\\\\\"-1\\\\\\" interval=\\\\\\"300000\\\\\\"/>     <memory max-count=\\\\\\"-1\\\\\\"/>    </distributed-cache>  </cache-container></infinispan>\\" > cache-ispn-jdbc-ping.xml && cp cache-ispn-jdbc-ping.xml /opt/keycloak/conf/cache-ispn-jdbc-ping.xml && /opt/keycloak/bin/kc.sh build && /opt/keycloak/bin/kc.sh start",
+              "touch cache-ispn-jdbc-ping.xml && echo \\"<?xml version=\\\\\\"1.0\\\\\\" encoding=\\\\\\"UTF-8\\\\\\"?> <infinispan    xmlns:xsi=\\\\\\"http://www.w3.org/2001/XMLSchema-instance\\\\\\"    xsi:schemaLocation=\\\\\\"urn:infinispan:config:11.0 http://www.infinispan.org/schemas/infinispan-config-11.0.xsd\\\\\\"    xmlns=\\\\\\"urn:infinispan:config:11.0\\\\\\">  <jgroups>    <stack name=\\\\\\"jdbc-ping-tcp\\\\\\" extends=\\\\\\"tcp\\\\\\">      <JDBC_PING connection_driver=\\\\\\"com.mysql.cj.jdbc.Driver\\\\\\"                 connection_username=\\\\\\"\\\\\${env.KC_DB_USERNAME}\\\\\\"                  connection_password=\\\\\\"\\\\\${env.KC_DB_PASSWORD}\\\\\\"                 connection_url=\\\\\\"jdbc:mysql://\\\\\${env.KC_DB_URL_HOST}/\\\\\${env.KC_DB_URL_DATABASE}\\\\\\"                                  info_writer_sleep_time=\\\\\\"500\\\\\\"                 remove_all_data_on_view_change=\\\\\\"true\\\\\\"                 stack.combine=\\\\\\"REPLACE\\\\\\"                 stack.position=\\\\\\"MPING\\\\\\" />    </stack>  </jgroups>  <cache-container name=\\\\\\"keycloak\\\\\\">    <transport lock-timeout=\\\\\\"60000\\\\\\" stack=\\\\\\"jdbc-ping-tcp\\\\\\"/>    <local-cache name=\\\\\\"realms\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <memory max-count=\\\\\\"10000\\\\\\"/>    </local-cache>    <local-cache name=\\\\\\"users\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <memory max-count=\\\\\\"10000\\\\\\"/>    </local-cache>    <distributed-cache name=\\\\\\"sessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"authenticationSessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"offlineSessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"clientSessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"offlineClientSessions\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <distributed-cache name=\\\\\\"loginFailures\\\\\\" owners=\\\\\\"3\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </distributed-cache>    <local-cache name=\\\\\\"authorization\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <memory max-count=\\\\\\"10000\\\\\\"/>    </local-cache>    <replicated-cache name=\\\\\\"work\\\\\\">      <expiration lifespan=\\\\\\"-1\\\\\\"/>    </replicated-cache>    <local-cache name=\\\\\\"keys\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <expiration max-idle=\\\\\\"3600000\\\\\\"/>      <memory max-count=\\\\\\"1000\\\\\\"/>    </local-cache>    <distributed-cache name=\\\\\\"actionTokens\\\\\\" owners=\\\\\\"3\\\\\\">      <encoding>        <key media-type=\\\\\\"application/x-java-object\\\\\\"/>        <value media-type=\\\\\\"application/x-java-object\\\\\\"/>      </encoding>      <expiration max-idle=\\\\\\"-1\\\\\\" lifespan=\\\\\\"-1\\\\\\" interval=\\\\\\"300000\\\\\\"/>     <memory max-count=\\\\\\"-1\\\\\\"/>    </distributed-cache>  </cache-container></infinispan>\\" > cache-ispn-jdbc-ping.xml && cp cache-ispn-jdbc-ping.xml /opt/keycloak/conf/cache-ispn-jdbc-ping.xml && /opt/keycloak/bin/kc.sh build && /opt/keycloak/bin/kc.sh start",
             ],
             "Environment": Array [
               Object {
@@ -678,7 +689,7 @@ Object {
               },
               Object {
                 "Name": "KC_HOSTNAME",
-                "Value": "hostname for keycloak server",
+                "Value": "keycloak-sql.cloud-demo.tech",
               },
               Object {
                 "Name": "KC_HOSTNAME_STRICT_BACKCHANNEL",
@@ -687,10 +698,6 @@ Object {
               Object {
                 "Name": "KC_PROXY",
                 "Value": "edge",
-              },
-              Object {
-                "Name": "INITIALIZE_SQL",
-                "Value": "CREATE TABLE IF NOT EXISTS JGROUPSPING (own_addr varchar(200) NOT NULL, cluster_name varchar(200) NOT NULL, ping_data VARBINARY(255), constraint PK_JGROUPSPING PRIMARY KEY (own_addr, cluster_name));",
               },
               Object {
                 "Name": "KC_CACHE_CONFIG_FILE",
@@ -705,7 +712,7 @@ Object {
                 "awslogs-group": Object {
                   "Ref": "KeyCloakKeyCloakContainerServiceLogGroup770A4A22",
                 },
-                "awslogs-region": "us-east-1",
+                "awslogs-region": "ap-southeast-1",
                 "awslogs-stream-prefix": "keycloak",
               },
             },
@@ -778,7 +785,7 @@ Object {
             "Arn",
           ],
         },
-        "Family": "keycloakdemoKeyCloakKeyCloakContainerServiceTaskDef3C4C2CF7",
+        "Family": "keycloaktestsqlKeyCloakKeyCloakContainerServiceTaskDef62D122E9",
         "Memory": "8192",
         "NetworkMode": "awsvpc",
         "RequiresCompatibilities": Array [
@@ -906,7 +913,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc",
           },
         ],
       },
@@ -917,7 +924,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc",
           },
         ],
       },
@@ -951,7 +958,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PrivateSubnet1",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -962,15 +969,8 @@ Object {
     },
     "KeyCloakVpcPrivateSubnet1SubnetA692DFFF": Object {
       "Properties": Object {
-        "AvailabilityZone": Object {
-          "Fn::Select": Array [
-            0,
-            Object {
-              "Fn::GetAZs": "",
-            },
-          ],
-        },
-        "CidrBlock": "10.0.128.0/18",
+        "AvailabilityZone": "dummy1a",
+        "CidrBlock": "10.0.96.0/19",
         "MapPublicIpOnLaunch": false,
         "Tags": Array [
           Object {
@@ -983,7 +983,7 @@ Object {
           },
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PrivateSubnet1",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PrivateSubnet1",
           },
         ],
         "VpcId": Object {
@@ -1020,7 +1020,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PrivateSubnet2",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PrivateSubnet2",
           },
         ],
         "VpcId": Object {
@@ -1031,15 +1031,8 @@ Object {
     },
     "KeyCloakVpcPrivateSubnet2SubnetC8682D75": Object {
       "Properties": Object {
-        "AvailabilityZone": Object {
-          "Fn::Select": Array [
-            1,
-            Object {
-              "Fn::GetAZs": "",
-            },
-          ],
-        },
-        "CidrBlock": "10.0.192.0/18",
+        "AvailabilityZone": "dummy1b",
+        "CidrBlock": "10.0.128.0/19",
         "MapPublicIpOnLaunch": false,
         "Tags": Array [
           Object {
@@ -1052,7 +1045,69 @@ Object {
           },
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PrivateSubnet2",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PrivateSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "KeyCloakVpcF3901B3A",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "KeyCloakVpcPrivateSubnet3DefaultRoute69A2CD69": Object {
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "NatGatewayId": Object {
+          "Ref": "KeyCloakVpcPublicSubnet1NATGateway923A52EE",
+        },
+        "RouteTableId": Object {
+          "Ref": "KeyCloakVpcPrivateSubnet3RouteTable16F8DA73",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "KeyCloakVpcPrivateSubnet3RouteTable16F8DA73": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PrivateSubnet3",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "KeyCloakVpcF3901B3A",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "KeyCloakVpcPrivateSubnet3RouteTableAssociationEEA47270": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "KeyCloakVpcPrivateSubnet3RouteTable16F8DA73",
+        },
+        "SubnetId": Object {
+          "Ref": "KeyCloakVpcPrivateSubnet3SubnetE1955755",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "KeyCloakVpcPrivateSubnet3SubnetE1955755": Object {
+      "Properties": Object {
+        "AvailabilityZone": "dummy1c",
+        "CidrBlock": "10.0.160.0/19",
+        "MapPublicIpOnLaunch": false,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Private",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PrivateSubnet3",
           },
         ],
         "VpcId": Object {
@@ -1082,7 +1137,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PublicSubnet1",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -1106,7 +1161,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PublicSubnet1",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PublicSubnet1",
           },
         ],
       },
@@ -1117,7 +1172,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PublicSubnet1",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -1139,15 +1194,8 @@ Object {
     },
     "KeyCloakVpcPublicSubnet1Subnet0762DA88": Object {
       "Properties": Object {
-        "AvailabilityZone": Object {
-          "Fn::Select": Array [
-            0,
-            Object {
-              "Fn::GetAZs": "",
-            },
-          ],
-        },
-        "CidrBlock": "10.0.0.0/18",
+        "AvailabilityZone": "dummy1a",
+        "CidrBlock": "10.0.0.0/19",
         "MapPublicIpOnLaunch": true,
         "Tags": Array [
           Object {
@@ -1160,7 +1208,7 @@ Object {
           },
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PublicSubnet1",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PublicSubnet1",
           },
         ],
         "VpcId": Object {
@@ -1200,7 +1248,7 @@ Object {
         "Tags": Array [
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PublicSubnet2",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PublicSubnet2",
           },
         ],
         "VpcId": Object {
@@ -1211,15 +1259,8 @@ Object {
     },
     "KeyCloakVpcPublicSubnet2Subnet22049636": Object {
       "Properties": Object {
-        "AvailabilityZone": Object {
-          "Fn::Select": Array [
-            1,
-            Object {
-              "Fn::GetAZs": "",
-            },
-          ],
-        },
-        "CidrBlock": "10.0.64.0/18",
+        "AvailabilityZone": "dummy1b",
+        "CidrBlock": "10.0.32.0/19",
         "MapPublicIpOnLaunch": true,
         "Tags": Array [
           Object {
@@ -1232,7 +1273,72 @@ Object {
           },
           Object {
             "Key": "Name",
-            "Value": "keycloak-demo/KeyCloak/Vpc/PublicSubnet2",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PublicSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "KeyCloakVpcF3901B3A",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "KeyCloakVpcPublicSubnet3DefaultRouteC1D6BB3A": Object {
+      "DependsOn": Array [
+        "KeyCloakVpcVPCGW23A2D9CE",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "KeyCloakVpcIGW69251108",
+        },
+        "RouteTableId": Object {
+          "Ref": "KeyCloakVpcPublicSubnet3RouteTable479EEAD8",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "KeyCloakVpcPublicSubnet3RouteTable479EEAD8": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PublicSubnet3",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "KeyCloakVpcF3901B3A",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "KeyCloakVpcPublicSubnet3RouteTableAssociation381AE091": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "KeyCloakVpcPublicSubnet3RouteTable479EEAD8",
+        },
+        "SubnetId": Object {
+          "Ref": "KeyCloakVpcPublicSubnet3Subnet727591F1",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "KeyCloakVpcPublicSubnet3Subnet727591F1": Object {
+      "Properties": Object {
+        "AvailabilityZone": "dummy1c",
+        "CidrBlock": "10.0.64.0/19",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "keycloak-test-sql/KeyCloak/Vpc/PublicSubnet3",
           },
         ],
         "VpcId": Object {
@@ -1252,7 +1358,7 @@ Object {
       },
       "Type": "AWS::EC2::VPCGatewayAttachment",
     },
-    "keycloakdemoKeyCloakDatabaseDBClusterSecret77AE3E0D3fdaad7efa858a3daf9490cf0a702aeb": Object {
+    "keycloaktestsqlKeyCloakDatabaseDBClusterSecretCF5198C43fdaad7efa858a3daf9490cf0a702aeb": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "Description": Object {
